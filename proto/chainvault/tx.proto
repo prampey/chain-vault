@@ -7,7 +7,19 @@ option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc AddCard(MsgAddCard) returns (MsgAddCardResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgAddCard {
+  string creator = 1;
+  string cardNo = 2;
+  string doe = 3;
+  string cvv = 4;
+}
+
+message MsgAddCardResponse {
+  string idValue = 1;
 }
 
 // this line is used by starport scaffolding # proto/tx/message
