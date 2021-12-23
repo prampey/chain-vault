@@ -1,0 +1,12 @@
+syntax = "proto3";
+package prampey.chainvault.chainvault;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+package prampey.chainvault.chainvault;
+
+import "gogoproto/gogo.proto";
+import "chainvault/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
+
+// GenesisState defines the chainvault module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
