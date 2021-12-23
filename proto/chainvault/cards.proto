@@ -1,0 +1,12 @@
+syntax = "proto3";
+package prampey.chainvault.chainvault;
+
+option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
+
+message Cards {
+  uint64 id = 1;
+  string cardNo = 2; 
+  string doe = 3; 
+  string cvv = 4; 
+  
+}

@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "chainvault/params.proto";
+import "chainvault/cards.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
@@ -15,7 +16,17 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/prampey/chainvault/chainvault/params";
   }
-  // this line is used by starport scaffolding # 2
+  // Queries a Cards by id.
+	rpc Cards(QueryGetCardsRequest) returns (QueryGetCardsResponse) {
+		option (google.api.http).get = "/prampey/chainvault/chainvault/cards/{id}";
+	}
+
+	// Queries a list of Cards items.
+	rpc CardsAll(QueryAllCardsRequest) returns (QueryAllCardsResponse) {
+		option (google.api.http).get = "/prampey/chainvault/chainvault/cards";
+	}
+
+// this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -25,6 +36,23 @@ message QueryParamsRequest {}
 message QueryParamsResponse {
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetCardsRequest {
+	uint64 id = 1;
+}
+
+message QueryGetCardsResponse {
+	Cards Cards = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCardsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCardsResponse {
+	repeated Cards Cards = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 // this line is used by starport scaffolding # 3

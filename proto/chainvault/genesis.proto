@@ -3,6 +3,7 @@ package prampey.chainvault.chainvault;
 
 import "gogoproto/gogo.proto";
 import "chainvault/params.proto";
+import "chainvault/cards.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
@@ -10,5 +11,7 @@ option go_package = "github.com/prampey/chain-vault/x/chainvault/types";
 // GenesisState defines the chainvault module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  repeated Cards cardsList = 2 [(gogoproto.nullable) = false];
+  uint64 cardsCount = 3;
   // this line is used by starport scaffolding # genesis/proto/state
 }
